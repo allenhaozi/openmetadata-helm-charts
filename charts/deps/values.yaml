@@ -10,10 +10,12 @@ mysql:
   image:
     pullPolicy: "Always"
   auth:
-    rootPassword: password    # provided by CI/CD
+    rootPassword: openaios # provided by CI/CD
   primary:
     service:
       nodePort: 3306
+    persistence:
+      storageClass: "rancher-local-path"
   initdbScripts:
     init_openmetadata_db_scripts.sql: |
       CREATE DATABASE openmetadata_db;
@@ -42,3 +44,9 @@ elasticsearch:
     limits:
       cpu: "1000m"
       memory: "512M"
+  volumeClaimTemplate:
+    accessModes: ["ReadWriteOnce"]
+    storageClassName: "rancher-local-path"
+    resources:
+      requests:
+        storage: 30Gi

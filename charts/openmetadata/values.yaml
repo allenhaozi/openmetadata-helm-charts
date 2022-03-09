@@ -24,9 +24,9 @@ global:
         secretKey: openmetadata-user-password
     databaseName: openmetadata_db
   airflow:
-    enabled: false
-    host: airflow
-    port: 8080
+    enabled: true
+    host: 172.27.70.15
+    port: 30303
     auth:
       username: admin
       password:
@@ -66,9 +66,11 @@ serviceAccount:
   # If not set and create is true, a name is generated using the fullname template
   name: ""
 podAnnotations: {}
-podSecurityContext: {}
+podSecurityContext:
+  {}
   # fsGroup: 2000
-securityContext: {}
+securityContext:
+  {}
   # capabilities:
   #   drop:
   #   - ALL
