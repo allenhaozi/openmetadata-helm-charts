@@ -37,7 +37,7 @@ global:
       username: openmetadata_user
       password:
         secretRef: mysql-secrets
-        secretKey: openmetadata-mysql-password
+        secretKey: openmetadata-user-password
   airflow:
     enabled: true
     host: 172.27.70.15
@@ -46,7 +46,7 @@ global:
       username: admin
       password:
         secretRef: airflow-secrets
-        secretKey: openmetadata-airflow-password
+        secretKey: openmetadata-airflow-admin-password
   authorizer:
     className: "org.openmetadata.catalog.security.NoopAuthorizer"
     containerRequestFilter: "org.openmetadata.catalog.security.NoopFilter"
@@ -73,7 +73,6 @@ global:
   #   authority: "https://accounts.google.com"
   #   clientId: "<client_id>"
   #   callbackUrl: "<callback_url>"
-
 
 image:
   repository: openmetadata/server
